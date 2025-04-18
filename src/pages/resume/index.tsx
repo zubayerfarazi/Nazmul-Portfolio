@@ -54,10 +54,11 @@ const ResumePage = () => {
   ];
 
   return (
-    <div className="max-w-screen-lg mx-auto p-6">
-      <p className="text-4xl font-bold text-center text-gray-800 mb-10">
+    <div id="resume" className="max-w-screen-lg min-h-screen mx-auto p-6">
+      <p className="text-4xl font-bold text-center text-gray-800">
         My Resume
       </p>
+      <p className="text-center text-gray-600 mb-10">Detailed Outline of My Technical and Academic Background</p>
 
       {/* Skills Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">

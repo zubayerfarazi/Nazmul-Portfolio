@@ -7,24 +7,40 @@ const ProjectCard = ({ project }) => {
 
   return (
     <motion.div
+    id="projects"
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
-      className="rounded-xl bg-teal-300 shadow-lg p-3 transition-transform transform cursor-pointer hover:shadow-xl"
+      className="rounded-2xl bg-white/70 backdrop-blur-md border border-teal-200 transition-all hover:shadow-xl cursor-pointer overflow-hidden"
     >
-      <img
-        src={project.image}
-        alt={project.name}
-        className="w-full h-48 object-cover rounded-lg mb-4 hover:scale-105 transition-all duration-300 ease-in-out"
-      />
-      <div>
-        <h3 className="text-xl font-bold text-center pb-2 text-gray-800">{project.name}</h3>
-        <p className="text-sm text-gray-800 text-justify">{project.description}</p>
+      <div className="relative group">
+        <img
+          src={project.image}
+          alt={project.name}
+          className="w-full h-42 object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <span className="absolute top-3 left-3 bg-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+          {project.category}
+        </span>
+      </div>
+
+      <div className="p-5 flex flex-col space-y-3">
+        <h3 className="text-2xl font-bold text-teal-800">{project.name}</h3>
+        <p className="text-gray-700 text-md line-clamp-2">{project.description}</p>
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-2 text-center px-5 py-2 bg-teal-600 text-white rounded-full font-medium shadow hover:bg-teal-500 hover:scale-105 transition-transform duration-300"
+        >
+          View Details
+        </a>
       </div>
     </motion.div>
   );
 };
+
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -55,7 +71,6 @@ const Projects = () => {
         <p className="text-center text-gray-600">A showcase of my work</p>
       </div>
 
-      {/* Filter Buttons */}
       <div className="flex justify-center space-x-3 mb-8">
         {categories.map((category) => (
           <button
@@ -73,7 +88,6 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* Project Cards (Appear One by One) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProjects.map((project, index) => (
           <ProjectCard key={index} project={project} />

@@ -1,18 +1,33 @@
+import { AiOutlineFileText } from "react-icons/ai";
+import { FiExternalLink } from "react-icons/fi";
+
 const PublicationCard = ({ publication }) => {
   return (
-    <div className=" rounded-lg shadow-lg p-6 bg-teal-300 hover:shadow-2xl transition duration-300 cursor-pointer">
-      <h3 className="text-xl font-bold">{publication.title}</h3>
-      <p className="text-md">{publication.publisher}</p>
+    <div className="bg-gradient-to-r via-teal-200 to-teal-300 border border-teal-200 text-gray-900 rounded-2xl p-6 shadow-sm transition duration-300 hover:-translate-y-1 flex flex-col justify-between">
+      <div className="flex items-start gap-3 mb-3">
+        <div className="bg-teal-100 p-2 rounded-full">
+          <AiOutlineFileText size={24} className="text-teal-600" />
+        </div>
+        <h3 className="text-lg font-bold text-gray-800 leading-snug">
+          {publication.title}
+        </h3>
+      </div>
+      <span className="inline-block bg-teal-50 text-teal-700 text-xs font-bold px-3 py-1 rounded-full mb-4 w-fit">
+        {publication.publisher}
+      </span>
+
+      <div className="text-center">
       {publication.doi && (
         <a
-          href={`https://doi.org/${publication.doi}`}
+          href={`https://doi.org/${publication.doi.replace(/^https:\/\/doi.org\//, "")}`}
           target="_blank"
           rel="noopener noreferrer"
-          className=" hover:text-teal-800 font-medium mt-2 inline-block"
+          className="text-lg bg-teal-800 hover:bg-teal-700 rounded-md py-1 w-40 text-white font-medium inline-flex justify-center items-center gap-1"
         >
-          View DOI
+          View DOI <FiExternalLink size={16} />
         </a>
       )}
+      </div>
     </div>
   );
 };
@@ -38,8 +53,7 @@ const Publication = () => {
   ];
 
   return (
-    <div className="p-8">
-      {/* Header */}
+    <div id="publication" className="p-8">
       <div className="mb-8 text-center">
         <h2 className="text-4xl font-bold text-center text-gray-800">My Publications</h2>
         <p className="text-gray-600">Research works and academic contributions</p>

@@ -28,6 +28,7 @@ const Sidebar = () => {
     setActiveSection(id);
   };
 
+
   useEffect(() => {
     const observerOptions = {
       root: null, 
@@ -43,7 +44,6 @@ const Sidebar = () => {
       });
     }, observerOptions);
 
-    // Observe each section
     sections.forEach((section) => {
       const element = document.getElementById(section.id);
       if (element) observer.observe(element);
@@ -56,10 +56,9 @@ const Sidebar = () => {
       });
     };
   }, []);
-
+  
   return (
     <div className="relative">
-      {/* Mobile Navbar */}
       <div className="md:hidden fixed top-0 left-0 w-full p-4 bg-teal-900 flex items-center justify-between z-50">
         <p className="text-xl font-bold text-white">Nazmul Islam</p>
         <div className="flex items-center gap-6 cursor-pointer">
@@ -109,7 +108,6 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {/* Desktop Sidebar */}
       <div className="hidden fixed md:flex flex-col px-10 shadow-xl w-64 h-full py-10 justify-between bg-teal-900 text-white">
         <div className="leading-tight">
           <p className="text-xl font-bold">Nazmul Islam</p>
