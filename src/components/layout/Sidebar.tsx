@@ -142,7 +142,7 @@ const Sidebar = () => {
             <FaGoogleScholar size={20} />
           </div>
           <div>
-            <p className="text-[10px]">Copyright © 2025 All rights reserved.</p>
+            <p className="text-[10px]">© 2025 Nazmul. All rights reserved.</p>
           </div>
         </div>
       </div>
